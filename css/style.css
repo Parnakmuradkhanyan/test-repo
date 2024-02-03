@@ -17,3 +17,120 @@
     border: 1px solid gray;
     border-radius: 5px;
 }
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+  
+.player {
+    width: 600px;
+    height: 200px;
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+  
+.details {
+    width: 80%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+}
+  
+.track-art {
+    width: 100px;
+    height: 100px;
+    background-image: url("track.jpg");
+    background-size: cover;
+    border: 2px solid #ccc;
+}
+  
+.track-name, .track-artist {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-left: 20px;
+}
+  
+.buttons {
+    width: 80%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+button {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #ccc;
+    cursor: pointer;
+    outline: none;
+}
+  
+button:hover {
+    background-color: #ddd;
+}
+  
+button:active {
+    background-color: #bbb;
+}
+  
+button i {
+    color: #333;
+    font-size: 24px;
+}
+  
+.slider-container {
+    width: 80%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+}
+  
+.current-time, .total-duration {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+  
+input[type=range] {
+    width: 70%;
+    height: 5px;
+    -webkit-appearance: none;
+    background-color: #ccc;
+    outline: none;
+}
+  
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #333;
+    cursor: pointer;
+}
+
+input[type=range] {
+    /* Добавить переменную для значения ползунка */
+    --value: calc((100% - 15px) * var(--percent));
+    /* Добавить два линейных градиента для фона */
+    background: linear-gradient(to right, #ccc 0%, #ccc var(--value), transparent var(--value), transparent 100%), linear-gradient(to right, #fff 0%, #fff var(--value), transparent var(--value), transparent 100%);
+}
+
+
+  
+i {
+    color: #333;
+    font-size: 18px;
+    margin: 0 10px;
+}

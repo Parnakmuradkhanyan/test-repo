@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./font/bootstrap-icons.css">
 
     <link rel="stylesheet" href="./css/style.css">
+    
 
 
 </head>
@@ -62,7 +63,28 @@
             </div>
         </div>
     </header>
-
+    <div class="player">
+      <div class="details">
+        <div class="track-art"></div>
+        <div class="track-name">Название трека</div>
+        <div class="track-artist">Исполнитель</div>
+      </div>
+      <div class="buttons">
+        <button id="prev" onclick="prevTrack()"><i class="fas fa-step-backward"></i></button>
+        <button id="play" onclick="playPauseTrack()"><i class="fas fa-play"></i></button>
+        <button id="next" onclick="nextTrack()"><i class="fas fa-step-forward"></i></button>
+      </div>
+      <div class="slider-container">
+        <div class="current-time">00:00</div>
+        <input type="range" id="seek" min="0" max="100" value="0" onchange="seekTo()">
+        <div class="total-duration">00:00</div>
+      </div>
+      <div class="slider-container">
+        <i class="fas fa-volume-down"></i>
+        <input type="range" id="volume" min="0" max="100" value="50" onchange="setVolume()">
+        <i class="fas fa-volume-up"></i>
+      </div>
+    </div>
     <section class="about-us">
       <div class="container">
         <div class="row">
@@ -125,6 +147,7 @@
 
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/script.js"></script>
+
 
 </body>
 </html>
