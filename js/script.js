@@ -64,9 +64,6 @@ function loadTrack(index) {
 function formatTime(seconds) {
     let min = Math.floor(seconds / 60);
     let sec = Math.floor(seconds - min * 60);
-    if (min < 10) {
-      min = "0" + min;
-    }
     if (sec < 10) {
       sec = "0" + sec;
     }
@@ -136,6 +133,23 @@ function updateSeek() {
 // Функция для установки громкости
 function setVolume() {
     curr_track.volume = volume_slider.value / 100;
+
+    // Получить элементы DOM
+    let audio = document.getElementById("audio"); // элемент аудио
+    let volume = document.getElementById("volume"); // ползунок громкости
+    let volumeValue = document.getElementById("volume-value"); // элемент для отображения значения громкости
+
+    // Добавить обработчик события для изменения ползунка
+    volume.addEventListener("input", function() {
+    // Установить громкость аудио в соответствии с ползунком
+    audio.volume = volume.value / 100;
+    // Обновить элемент с значением громкости
+    volumeValue.textContent = volume.value + "%";
+    });
+
+    // Добавить свойство --percent к ползунку
+    volume_slider.style.setProperty("--percent", volume.value / 100);
+
 }
 // Добавить обработчик события для обновления ползунка перемотки
 curr_track.addEventListener("timeupdate", updateSeek);
@@ -152,4 +166,32 @@ function updateSeek() {
     curr_time.textContent = current;
     // Добавить свойство --percent к ползунку
     seek_slider.style.setProperty("--percent", seek / 100);
+}
+
+
+
+// Получить элемент плейлиста
+let playlist = document.getElementById("playlist");
+// Добавить обработчик события для нажатия на трек в плейлисте
+playlist.addEventListener("click", function(e) {
+  // Если нажатый элемент - это пункт плейлиста
+  if (e.target.tagName === "LI") {
+    // Получить данные трека из атрибутов элемента
+    let songName = e.target.getAttribute("data-name");
+    let songImage = e.target.getAttribute("data-image");
+    let songPath = e.target.getAttribute("data-path");
+    // Найти индекс трека в списке по его пути
+    let trackIndex = track_list.indexOf(track_list.find(track => track.path === songPath));
+    // Загрузить трек по индексу
+    loadTrack(trackIndex);
+    // Воспроизвести трек
+    playPauseTrack();
+    // Удалить класс active со всех пунктов плейлиста
+    let items = playlist.getElementsByTagName("li");
+    for (let i = 0; i < items.length; i++) {
+      items[i].classList.remove("active");
+    }
+    // Добавить класс active к нажатому пункту плейлиста
+    e.target.classList.add("active");
   }
+});
