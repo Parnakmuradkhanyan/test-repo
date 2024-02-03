@@ -1,5 +1,19 @@
 .header{
-    background-image: url(../img/bouqet.jpg) no-repeat;
+    background: url(../img/bouqet.jpg) no-repeat;
     background-size: cover;
 
+}
+
+.main-title{
+    margin-top: 100px;
+    margin-bottom: 400px;
+}
+
+.footer{
+    background: coral;
+}
+
+.flower-card{
+    border: 1px solid gray;
+    border-radius: 5px;
 }
